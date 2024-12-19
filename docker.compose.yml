@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0 # Versão do MySQL, altere conforme necessário
+    container_name: coursejdbc
+    ports:
+      - "3306:3306" # Mapeia a porta do host para o contêiner
+    environment:
+      MYSQL_ROOT_PASSWORD: admin # Defina a senha do usuário root
+      MYSQL_DATABASE: coursejdbc # Nome do banco de dados que será criado
+      MYSQL_USER: bico # Nome do usuário adicional
+      MYSQL_PASSWORD: 1234 # Senha para o usuário adicional
+    volumes:
+      - db_data:/var/lib/mysql # Persiste os dados do banco localmente
+
+volumes:
+  db_data:
