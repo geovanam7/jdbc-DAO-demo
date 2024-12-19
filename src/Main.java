@@ -1,35 +1,17 @@
 import db.DB;
+import model.entities.Department;
+import model.entities.Seller;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
+        Department obj = new Department(1, "Books");
+        System.out.println(obj);
 
-        try {
-            conn = DB.getConnection();
-            st = conn.createStatement();
-
-            rs = st.executeQuery("Select * from department");
-
-            while (rs.next()) {
-                System.out.println(rs.getInt("Id") + "," + rs.getString("Name"));
-                System.out.println(rs.getInt("Id") + "," + rs.getInt("Id"));
-
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DB.closeResulSet(rs);
-            DB.closeStatement(st);
-            DB.CloseConnection();
-        }
+        Seller seller = new Seller(21,"bob", "bob@gmail.com", 2090.0,new Date());
+        System.out.println(seller);
 
     }
 }
