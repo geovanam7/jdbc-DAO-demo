@@ -8,21 +8,17 @@ public class Seller implements Serializable {
 
     private String email;
     private String name;
-
-
-
     private Double BaseSalary;
-
     private Integer Id;
-
     private Date BirthDate;
-
-    public Seller(Integer Id,String name, String email, Double baseSalary, Date birthDate) {
+    private Department department;
+    public Seller(Integer Id,String name, String email, Double baseSalary, Date birthDate, Department  department) {
         this.Id=Id;
         this.name=name;
         this.email = email;
         this.BaseSalary = baseSalary;
         this.BirthDate = birthDate;
+        this.department = department;
     }
 
     public Integer getId() {
