@@ -6,27 +6,31 @@ import java.util.Objects;
 
 public class Seller implements Serializable {
 
-    private String email;
+    private Integer id;
     private String name;
-    private Double BaseSalary;
-    private Integer Id;
-    private Date BirthDate;
+    private String email;
+    private Double baseSalary;
+    private Date birthDate;
     private Department department;
-    public Seller(Integer Id,String name, String email, Double baseSalary, Date birthDate, Department  department) {
-        this.Id=Id;
-        this.name=name;
+
+    public Seller() {
+    }
+
+    public Seller(Integer id, String name, String email, Double baseSalary, Date birthDate, Department department) {
+        this.id = id;
+        this.name = name;
         this.email = email;
-        this.BaseSalary = baseSalary;
-        this.BirthDate = birthDate;
+        this.baseSalary = baseSalary;
+        this.birthDate = birthDate;
         this.department = department;
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -44,42 +48,53 @@ public class Seller implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public Double getBaseSalary() {
-        return BaseSalary;
+        return baseSalary;
     }
 
     public void setBaseSalary(Double baseSalary) {
-        BaseSalary = baseSalary;
+        this.baseSalary = baseSalary;
     }
 
     public Date getBirthDate() {
-        return BirthDate;
+        return birthDate;
     }
 
     public void setBirthDate(Date birthDate) {
-        BirthDate = birthDate;
+        this.birthDate = birthDate;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
-    public boolean equals(Object o) {       //Apenas Id
+    public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Seller seller)) return false;
-        return Objects.equals(getId(), seller.getId());
+        if (!(o instanceof Seller)) return false;
+        Seller seller = (Seller) o;
+        return Objects.equals(id, seller.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
-        return "Seller " +
-                "email " + email + '\'' +
-                " name " + name + '\'' +
-                " BaseSalary " + BaseSalary +
-                ", Id " + Id +
-                ", BirthDate " + BirthDate;
+        return "Seller{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", baseSalary=" + baseSalary +
+                ", birthDate=" + birthDate +
+                ", department=" + department +
+                '}';
     }
 }
-

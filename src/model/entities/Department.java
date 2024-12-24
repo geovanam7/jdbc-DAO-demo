@@ -6,11 +6,14 @@ import java.util.Objects;
 public class Department implements Serializable {
 
     private Integer id;
-    private String nameSector;
+    private String name;
 
-    public Department(Integer id, String nameSector) {
+    public Department() {
+    }
+
+    public Department(Integer id, String name) {
         this.id = id;
-        this.nameSector=nameSector;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -21,30 +24,32 @@ public class Department implements Serializable {
         this.id = id;
     }
 
-    public String getNameSector() {
-        return nameSector;
+    public String getName() {
+        return name;
     }
 
-    public void setNameSector(String nameSector) {
-        this.nameSector = nameSector;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Department that)) return false;
-        return Objects.equals(getId(), that.getId());
+        if (!(o instanceof Department)) return false;
+        Department that = (Department) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
-        return "Department " +
-                "id " + id +
-                " nameSector " + nameSector + '\'';
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
