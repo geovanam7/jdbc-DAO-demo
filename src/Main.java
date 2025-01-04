@@ -14,21 +14,29 @@ public class Main {
     public static void main(String[] args) {
 
 
-
         SellerDao sellerDao = DaoFactory.createdSellerDao();
-        System.out.println(" ====== TEST 2: seller findById ======");
+        System.out.println(" ====== TEST 1: seller findById ======");
 
         Seller seller = sellerDao.findById(19);
         System.out.println(seller);
 
-        System.out.println(" ====== TEST 2: seller findById ======");
-        Department department = new Department(2,null);
+        System.out.println(" ====== TEST 2: seller findByDepartment ======");
+        Department department = new Department(2, null);
 
         List<Seller> sel = sellerDao.findByDepartment(department);
 
-        for (Seller obj: sel){
-            System.out.println (obj);
-      }
+        for (Seller obj : sel) {
+            System.out.println(obj);
+        }
 
+        System.out.println(" ====== TEST 3: seller findAll ====== ");  //ordem alfabetica
+        sel = sellerDao.findAll();
+
+
+        for (Seller obj : sel) {
+            System.out.println(obj);
+
+
+        }
     }
 }
