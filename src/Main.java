@@ -20,6 +20,9 @@ public class Main {
         Seller seller = sellerDao.findById(19);
         System.out.println(seller);
 
+        System.out.println(" - - - - - - - - - - - - - ");
+
+
         System.out.println(" ====== TEST 2: seller findByDepartment ======");
         Department department = new Department(2, null);
 
@@ -28,8 +31,9 @@ public class Main {
         for (Seller obj : sel) {
             System.out.println(obj);
         }
+        System.out.println("  - - - - - - - - - - - - - - - -");
 
-        System.out.println(" ====== TEST 3: seller findAll ====== ");  //ordem alfabetica
+        System.out.println(" ====== TEST 3: seller findAll ====== ");
         sel = sellerDao.findAll();
 
 
@@ -38,5 +42,13 @@ public class Main {
 
 
         }
+        System.out.println(" - - - - - - - - - - - - - - - - -  -");
+
+        System.out.println(" ====== TEST 4: seller Insert ====== ");
+        Seller newSeller = new Seller(null,"Greg", "greg@email.com", 4000.0, new Date(), department);
+        sellerDao.insert(newSeller);
+        System.out.println("Inserted! New id = " + newSeller.getId());
+
+
     }
 }
