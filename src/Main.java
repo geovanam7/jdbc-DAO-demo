@@ -44,10 +44,24 @@ public class Main {
         }
         System.out.println(" - - - - - - - - - - - - - - - - -  -");
 
-        System.out.println(" ====== TEST 4: seller Insert ====== ");
+       /* System.out.println(" ====== TEST 4: seller Insert ====== ");
         Seller newSeller = new Seller(null,"Greg", "greg@email.com", 4000.0, new Date(), department);
         sellerDao.insert(newSeller);
         System.out.println("Inserted! New id = " + newSeller.getId());
+        */
+
+        System.out.println(" - - - - - - - - - - - - - - - - -  -");
+
+        System.out.println(" ====== TEST 5: seller Update ====== ");
+        seller = sellerDao.findById(7);
+
+        if (seller == null) {
+            System.out.println("Seller with id 1 not found!");
+        } else {
+            seller.setName("Martha Waine");
+            sellerDao.update(seller);
+            System.out.println("---- UPDATE COMPLETED ----- ");
+        }
 
 
     }
