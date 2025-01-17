@@ -86,11 +86,26 @@ public class SellerDaoJDBC implements SellerDao {
 
 
     @Override
-        public void deleteById (Integer id){
-
+    public void deleteById(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
         }
 
-        @Override
+        try (PreparedStatement st = conn.prepareStatement("DELETE FROM seller WHERE Id = ?")) {
+            st.setInt(1, id);
+            int rowsAffected = st.executeUpdate();
+
+            if (rowsAffected == 0) {
+                throw new DbException("No record found with Id = " + id);
+            }
+
+        } catch (SQLException e) {
+            throw new DbException("Error deleting seller with Id = " + id + ": " + e.getMessage());
+        }
+    }
+
+
+    @Override
         public Seller findById (Integer id){
             PreparedStatement st = null;
             ResultSet rs = null;
